@@ -10,4 +10,9 @@ export class ClarifaiController {
       return this.clarifaiService.prompCheck(PrompDto)
       
   }
+
+  @Post('text-to-audio')
+  async textToAudio(@Body() PrompDto: PrompDto) {
+    return this.clarifaiService.textToAudio(PrompDto)
+  }
 }
