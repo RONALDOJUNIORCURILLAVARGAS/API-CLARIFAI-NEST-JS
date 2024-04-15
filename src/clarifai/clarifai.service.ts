@@ -25,15 +25,15 @@ export class ClarifaiService {
       const url =
         `${process.env.CLARIFAI_API_URL}/` +
         `${process.env.CLARIFAI_API_VERSION}/users/` +
-        `${process.env.CLARIFAI_USER_ID}/apps/` +
-        `chat-completion/models/` +
-        `GPT-3_5-turbo/versions/` +
-        `4c0aec1853c24b4c83df8ba250f3b984/outputs`;
+        `gcp/apps/` +
+        `generate/models/` +
+        `gemini-pro/versions/` +
+        `f0bba7ad9c3c486e8853e82bd66304bf/outputs`;
       console.log('url', url);
       const { data: response } = await firstValueFrom(
         this.httpService.post(url, payload, config),
       );
-      return { audio: response };
+      return { orthography: response.outputs[0].data.text.raw };
     } catch (error) {
       throw new Error('Hubo un error al realizar la solicitud');
     }
